@@ -1,0 +1,16 @@
+.idea
+*.iml
+node_modules
+.DS_Store
+target
+_incubation
+_settings
+*.tar.gz
+**/credentials/**
+**/rootfs.tar.gz
+_config/**
+creds/
+**/credentials.txt
+ovpn/
+.tmp
+**/*.ovpn

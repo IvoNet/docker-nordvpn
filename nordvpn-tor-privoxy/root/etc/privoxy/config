@@ -1,0 +1,42 @@
+listen-address 0.0.0.0:8118
+forward-socks5 / localhost:9050 .
+confdir /etc/privoxy
+#templdir /etc/privoxy/templates
+#logdir /var/log/privoxy
+#logfile privoxy.log
+toggle  1
+enable-remote-toggle  0
+enable-remote-http-toggle  0
+enable-edit-actions 0
+enforce-blocks 0
+buffer-limit 4096
+enable-proxy-authentication-forwarding 0
+#forward         192.168.*.*/     .
+forward          172.17.*.*/     .
+#forward            10.*.*.*/     .
+#forward           127.*.*.*/     .
+#forward           localhost/     .
+forwarded-connect-retries  0
+accept-intercepted-requests 1
+allow-cgi-request-crunching 0
+split-large-forms 0
+keep-alive-timeout 10
+tolerate-pipelining 1
+default-server-timeout 15
+socket-timeout 300
+max-client-connections 256
+#handle-as-empty-doc-returns-ok 1
+
+actionsfile match-all.action # Actions that are applied to all sites and maybe overruled later on.
+actionsfile default.action   # Main actions file
+actionsfile user.action      # User customizations
+filterfile default.filter
+filterfile user.filter      # User customizations
+
+# custom filters and actions
+# From: https://s3.amazonaws.com/ab2p/ab2p.all_rus.7z
+actionsfile ab2p.system.action
+actionsfile ab2p.action
+filterfile ab2p.system.filter
+filterfile ab2p.filter
+

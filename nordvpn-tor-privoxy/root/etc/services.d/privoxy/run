@@ -1,0 +1,3 @@
+#!/bin/sh
+echo "Starting privoxy..."
+exec /usr/sbin/privoxy --no-daemon /etc/privoxy/config

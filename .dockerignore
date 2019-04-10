@@ -1,0 +1,8 @@
+.idea
+*.iml
+node_modules
+.DS_Store
+target
+_incubation
+creds/
+**/credentials.txt

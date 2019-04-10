@@ -1,0 +1,6 @@
+#!/usr/bin/with-contenv sh
+
+if [[ "${RECREATE_VPN_CRON}" ]]; then
+    echo "Found cron definition... starting cron service ..."
+    exec /usr/sbin/crond -f -l 8 -d 6
+fi
