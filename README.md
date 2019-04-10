@@ -101,3 +101,33 @@ docker run                                 \
        -e PROTOCOL=tcp                     \
        ivonet/nordvpn-tor-privoxy:latest
 ```
+
+
+# Environment variables
+
+| Environment Variable                  | Description                                             |
+| :-------------------------------------| :-------------------------------------------------------|
+| USER     | Username |
+| PASS     | Password |
+| MAX_LOAD | Only allow servers with a load less then the given percentage. Defaults to 30|
+| LOCATION | Two letter country code to direct the filtering to a specific country  |
+| PROTOCOL | tcp/udp |
+| NETWORK  | Classless Inter-Domain Routing (IE 192.168.1.0/24), to allows replies once the VPN is up. |
+| NETWORK6 | Classless Inter-Domain Routing (IE fe00:d34d:b33f::/64), to allows replies once the VPN is up. |
+
+Please read the Credentials section if you do not want to add the USER/PASS credentials to the commandline. 
+
+# Credentials
+
+if you use the `-v "$(pwd)/creds:/credentials"` option in the run command of one if the images
+you need to create a file in this directory called `credentials.txt` and
+give it the following content:
+
+credentials.txt:
+```bash
+USERNAME_HERE
+PASSWORD_HERE
+```
+
+I've excluded it from committing as to not give away things :-)
+
