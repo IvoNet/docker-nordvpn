@@ -83,7 +83,7 @@ def process(location, max_load):
 
     secure_random = random.SystemRandom()
     choice = secure_random.choice(candidates)
-    print(choice)
+    print("Randomly chosen: %s" % os.path.split(choice)[1])
 
     copyfile(choice, CONFIG_FILE)
 

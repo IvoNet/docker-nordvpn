@@ -6,3 +6,4 @@ target
 _incubation
 creds/
 **/credentials.txt
+.tmp/
