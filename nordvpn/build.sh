@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 image=nordvpn
-version=1.1
+version=1.2
 
 deploy="false"
 #deploy="true"

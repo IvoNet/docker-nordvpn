@@ -1,11 +1,11 @@
 #!/usr/bin/env bash
 image=nordvpn-tor-privoxy
-version=1.1-0.3.4.11-3.0.26
+version=1.2-0.3.4.11-3.0.26
 
-deploy="false"
-#deploy="true"
-versioning=false
-#versioning=true
+#deploy="false"
+deploy="true"
+#versioning=false
+versioning=true
 
 #OPTIONS="--no-cache --force-rm"
 #OPTIONS="--no-cache"

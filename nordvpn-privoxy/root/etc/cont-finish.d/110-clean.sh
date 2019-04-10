@@ -1,6 +1,8 @@
 #!/usr/bin/with-contenv bash
 
-rm -rf /var/log/
-rm -rf /tmp/
+echo "Cleaning up..."
+rm -rf /var/log/  2>/dev/null
+rm -rf /tmp/      2>/dev/null
+mkdir /tmp        2>/dev/null
 
 exit 0

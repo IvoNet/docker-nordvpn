@@ -1,4 +1,4 @@
 #!/bin/sh
 
-echo Starting tor...
+echo "Starting tor..."
 exec tor -f ./torrc
