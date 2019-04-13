@@ -129,5 +129,4 @@ USERNAME_HERE
 PASSWORD_HERE
 ```
 
-I've excluded it from committing as to not give away things :-)
 
