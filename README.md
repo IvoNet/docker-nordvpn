@@ -131,22 +131,39 @@ PASSWORD_HERE
 
 # Release notes
 The versioning of the images seems very long and convoluted but is quite logical when explained :-)
-The format of the versioning is: 
+Per image the format will be explained
 
-<My nordvpn image version>-<Tor version used>-<Privoxy version used>
+## ivonet/nordvpn
 
-So 1.1-0.3.4.11-3.0.26 means:
-- Version 1.1 of ivonet/nordvpn
-- version 0.3.4.11 of tor
-- version 3.0.26 of privoxy
+Format: `<major version>.<minor version>`
 
-## 1.3-0.3.4.11-3.0.26
+- when api breaking changes occur the major version will be updated and the minor version reset
+- when bug fixes or non api breaking changes occur the minor version is incremented
+
+### 1.3
 - Removed chmod attribute change on startup for the volume as it is probably almost never needed and takes a long time if lots of ovpn files are placed in the volume.
 - updated and released the other images too based omn this one.
 - now the other images will build of latest as that will make life a bit more easy.
 
-## 1.2-0.3.4.11-3.0.26
-- added more documentation and some small bug fixes
+### 1.1 and 1.2
+- fixes due to findings when building the other images
 
-## 1.1-0.3.4.11-3.0.26
-- first production ready version of my image
+### 1.0
+- first fully working version
+
+## ivonet/nordvpn-privoxy
+
+Format: `<My nordvpn image version>-<Privoxy version used>`
+
+So 1.3-3.0.26 means:
+- Version 1.3 of ivonet/nordvpn
+- version 3.0.26 of privoxy
+
+## ivonet/nordvpn-tor-privoxy
+
+Format: `<My nordvpn image version>-<Tor version used>-<Privoxy version used>`
+
+So 1.3-0.3.4.11-3.0.26 means:
+- Version 1.3 of ivonet/nordvpn
+- version 0.3.4.11 of tor
+- version 3.0.26 of privoxy
