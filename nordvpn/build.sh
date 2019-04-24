@@ -1,11 +1,11 @@
 #!/usr/bin/env bash
 image=nordvpn
-version=1.2
+version=1.3
 
 deploy="false"
 #deploy="true"
-versioning=false
-#versioning=true
+#versioning=false
+versioning=true
 
 #OPTIONS="--no-cache --force-rm"
 #OPTIONS="--no-cache"
