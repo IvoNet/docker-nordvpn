@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 image=nordvpn-privoxy
-version=1.2-3.0.26
+version=1.3-3.0.26
 
 #deploy="false"
 deploy="true"

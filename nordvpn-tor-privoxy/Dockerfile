@@ -1,4 +1,4 @@
-FROM ivonet/nordvpn:1.1
+FROM ivonet/nordvpn:latest
 
 RUN apk --update --no-cache --no-progress add privoxy tor
 
