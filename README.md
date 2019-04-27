@@ -140,6 +140,9 @@ Format: `<major version>.<minor version>`
 - when api breaking changes occur the major version will be updated and the minor version reset
 - when bug fixes or non api breaking changes occur the minor version is incremented
 
+### 1.4
+- Added a HOME variable for tor
+
 ### 1.3
 - Removed chmod attribute change on startup for the volume as it is probably almost never needed and takes a long time if lots of ovpn files are placed in the volume.
 - updated and released the other images too based omn this one.
