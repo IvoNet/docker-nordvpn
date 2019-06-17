@@ -37,6 +37,9 @@ ISO_CODES = (
 
 
 def check_candidate_files_exist(candidates):
+    """
+    Checks if the physical ovpn file exists
+    """
     protocol = IvoNet.environment('PROTOCOL', "tcp/udp").lower()
     print("Filtering in protocol %s..." % protocol)
     ret = []
@@ -55,6 +58,19 @@ def check_candidate_files_exist(candidates):
 
 
 def process(location, max_load):
+    """
+    This process will retrieve a server json from NordVPN with all the servers available and
+    filter them on the max_load provided. Servers still in the list must have less then the max_load
+    percentage.
+    The list will be filtered again on the location if provided so that only the list based on location
+    and max_load will be left.
+    Just to be sure that the physical ovpn files match the servers gotten from the endpoint
+    As a last step a random server will be chosen from that list and the configuration will be adjusted accordingly.
+
+    :param location: ISO code as location
+    :param max_load: the max load percentage allowed
+    :return:
+    """
     servers = IvoNet.url_get(IvoNet.api_server_stats())
     servers = json.loads(servers)
     global_candidates = [key for key in servers if servers[key]["percent"] < max_load]

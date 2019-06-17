@@ -1,4 +1,10 @@
 #!/usr/bin/with-contenv bash
+###############################################################################
+# This script will create a cron job if the correct options are provided
+# while creating / running the container.
+#
+# e.g. -e RECREATE_VPN_CRON="*/2 * * * *"
+###############################################################################
 
 cron_dir="/var/spool/cron/crontabs"
 cron_file="$cron_dir/root"

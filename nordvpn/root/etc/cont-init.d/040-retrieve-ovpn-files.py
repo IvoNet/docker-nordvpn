@@ -7,6 +7,11 @@ __copyright__ = "Copyright (c) 2019 Ivo Woltring"
 __license__ = "Apache 2.0"
 
 def get_ovpn_config_files(url):
+    """
+    retrieve the ovpn files from the provider if thy do not exist
+
+    :param url: the ovpn files endpoint
+    """
     if not IvoNet.has_ext(IvoNet.ovpn_tpc_dir(), ".ovpn"):
         print("Getting config files...")
         IvoNet.unzip(url, IvoNet.ovpn_dir())

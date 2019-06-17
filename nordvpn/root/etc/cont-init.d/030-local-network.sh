@@ -1,4 +1,8 @@
 #!/usr/bin/with-contenv bash
+###############################################################################
+# Will adjust the iptables to allow for local network
+###############################################################################
+
 
 if [ ! -z $NETWORK ]; then
     echo "Bypass requests for local network thru regular connection..."
