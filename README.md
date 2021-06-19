@@ -143,6 +143,12 @@ Format: `<major version>.<minor version>`
 - when api breaking changes occur the major version will be updated and the minor version reset
 - when bug fixes or non api breaking changes occur the minor version is incremented
 
+### 2.0
+
+- Upgraded packages and general cleanup
+- Python version 3.9.5
+- s6 version 2.2.0.3
+
 ### 1.4
 - Added a HOME variable for tor
 
@@ -165,6 +171,11 @@ So 1.3-3.0.26 means:
 - Version 1.3 of ivonet/nordvpn
 - version 3.0.26 of privoxy
 
+### 2.0-3.0.32
+
+- Upgraded parent image
+- Upgraded privoxy proxy to version 3.0.32
+
 ## ivonet/nordvpn-tor-privoxy
 
 Format: `<My nordvpn image version>-<Tor version used>-<Privoxy version used>`
@@ -173,3 +184,8 @@ So 1.3-0.3.4.11-3.0.26 means:
 - Version 1.3 of ivonet/nordvpn
 - version 0.3.4.11 of tor
 - version 3.0.26 of privoxy
+
+### 2.0-0.4.4.9-3.0.32
+
+- Upgraded parent image
+- Upgraded to tor version 0.4.4.9
