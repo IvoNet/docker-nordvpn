@@ -12,8 +12,8 @@ __copyright__ = "Copyright (c) 2019 Ivo Woltring"
 __license__ = "Apache 2.0"
 __doc__ = """
 
-Retrieves the credentials either from the Environment or from the credentials.txt file if configured
-One of the two must be provided for this image to work.
+Retrieves the credentials either from the Environment or from the credentials.txt 
+file if configured. One of the two must be provided for this image to work.
 
 """
 

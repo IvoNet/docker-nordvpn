@@ -5,12 +5,12 @@ docker run                                   \
        -d                                    \
        --cap-add=NET_ADMIN                   \
        --device /dev/net/tun                 \
-       --name nordvpn-deamon                 \
+       --name vpn                            \
        -v "$(pwd)/ovpn:/ovpn"                \
        -v "$(pwd)/creds:/credentials:ro"     \
        -p 8118:8118                          \
        -e MAX_LOAD=10                        \
-       -e RECREATE_VPN_CRON="*/2 * * * *"    \
+       -e RECREATE_VPN_CRON="* * * * *"      \
        --restart unless-stopped              \
        ivonet/nordvpn:latest
 

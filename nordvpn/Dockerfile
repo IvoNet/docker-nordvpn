@@ -1,4 +1,4 @@
-FROM ivonet/alpine-python-s6:3.9-3.7.3-1.22.1.0
+FROM ivonet/alpine-python-s6:3.13-3.9.5-2.2.0.3
 
 LABEL maintainer="IvoNet.nl"
 
