@@ -62,14 +62,14 @@ Well it is kinda the same as in the nordvpn example but now it also exposes port
 get access to a add blocking proxy running on a vpn.
 
 ```bash
-docker run                                \  
+docker run                                \
        -d                                 \
        --cap-add=NET_ADMIN                \
        --device /dev/net/tun              \
        --name proxy                       \
        --restart unless-stopped           \
-       -v "$(pwd)/ovpn:/ovpn"             \   
-       -v "$(pwd)/creds:/credentials:ro"  \   
+       -v "$(pwd)/ovpn:/ovpn"             \
+       -v "$(pwd)/creds:/credentials:ro"  \
        -p 8118:8118                       \
        -e LOCATION=nl                     \
        -e MAX_LOAD=10                     \

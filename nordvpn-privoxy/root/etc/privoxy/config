@@ -12,7 +12,7 @@ buffer-limit 4096
 enable-proxy-authentication-forwarding 0
 #forward-socks5t   /               0.0.0.0:9050 .
 #forward         192.168.*.*/     .
-#forward          172.17.*.*/     .
+forward          172.17.*.*/     .
 #forward            10.*.*.*/     .
 #forward           127.*.*.*/     .
 #forward           localhost/     .
@@ -29,11 +29,11 @@ max-client-connections 256
 #enable-compression 1
 #compression-level 1
 
-actionsfile match-all.action # Actions that are applied to all sites and maybe overruled later on.
-actionsfile default.action   # Main actions file
-actionsfile user.action      # User customizations
-filterfile default.filter
-filterfile user.filter      # User customizations
+#actionsfile match-all.action # Actions that are applied to all sites and maybe overruled later on.
+#actionsfile default.action   # Main actions file
+#actionsfile user.action      # User customizations
+#filterfile default.filter
+#filterfile user.filter      # User customizations
 
 # custom filters and actions
 # From: https://s3.amazonaws.com/ab2p/ab2p.all_rus.7z
