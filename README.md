@@ -111,6 +111,7 @@ docker run                                 \
 | PASS     | Password |
 | MAX_LOAD | Only allow servers with a load less then the given percentage. Defaults to 30|
 | LOCATION | Two letter country code to direct the filtering to a specific country  |
+| SERVER   | Specific server name to connect. (e.g. us9957)  |
 | PROTOCOL | tcp/udp |
 | NETWORK  | Classless Inter-Domain Routing (IE 192.168.1.0/24), to allows replies once the VPN is up. |
 | NETWORK6 | Classless Inter-Domain Routing (IE fe00:d34d:b33f::/64), to allows replies once the VPN is up. |

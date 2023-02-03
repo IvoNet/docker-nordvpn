@@ -57,7 +57,7 @@ def check_candidate_files_exist(candidates):
     return ret
 
 
-def process(location, max_load):
+def process(location, server, max_load):
     """
     This process will retrieve a server json from NordVPN with all the servers available and
     filter them on the max_load provided. Servers still in the list must have less then the max_load
@@ -68,12 +68,16 @@ def process(location, max_load):
     As a last step a random server will be chosen from that list and the configuration will be adjusted accordingly.
 
     :param location: ISO code as location
+    :param server: deseired server name to connect
     :param max_load: the max load percentage allowed
     :return:
     """
     servers = IvoNet.url_get(IvoNet.api_server_stats())
     servers = json.loads(servers)
-    global_candidates = [key for key in servers if servers[key]["percent"] < max_load]
+    global_candidates = [
+        key for key in servers
+        if servers[key]["percent"] < max_load or (server and key.startswith(server))
+    ]
     if global_candidates:
         print("Servers found with less then %s capacity" % max_load)
     else:
@@ -97,9 +101,22 @@ def process(location, max_load):
 
     print("Found %s servers." % len(candidates))
 
-    secure_random = random.SystemRandom()
-    choice = secure_random.choice(candidates)
-    print("Randomly chosen: %s" % os.path.split(choice)[1])
+    if server:
+        print("Choosing %s... from %d servers" % (server, len(candidates)))
+        substr = server + '.'
+        candidates = [c for c in candidates if substr in c]
+        if len(candidates) == 0:
+            print('Cannot find given server on candidates.')
+            sys.exit(1)
+        elif len(candidates) > 1:
+            print('Given server name is ambiguous: %s' % str(candidates))
+            sys.exit(1)
+        choice = candidates[0]
+        print('Chosen: %s' % os.path.split(choice)[1])
+    else:
+        secure_random = random.SystemRandom()
+        choice = secure_random.choice(candidates)
+        print("Randomly chosen: %s" % os.path.split(choice)[1])
 
     copyfile(choice, CONFIG_FILE)
 
@@ -117,12 +134,13 @@ def process(location, max_load):
 
 def main():
     try:
-        opts, args = getopt.getopt(sys.argv[1:], "hl:m:n:v", ["help", "location=", "max_load=", "verbose"])
+        opts, args = getopt.getopt(sys.argv[1:], "hl:m:n:vs:", ["help", "location=", "max_load=", "server=", "verbose"])
     except getopt.GetoptError as err:
         print(err)
         sys.exit(2)
     max_load = None
     location = None
+    server = None
     for o, a in opts:
         if o in ("-v", "--verbose"):
             global verbose
@@ -136,6 +154,8 @@ def main():
             else:
                 print("ISO_CODE [%s] not recognised." % a)
                 sys.exit(2)
+        elif o in ("-s", "--server"):
+            server = a.lower()
         elif o in ("-m", "--max_load"):
             try:
                 max_load = int(a)
@@ -144,7 +164,11 @@ def main():
                 sys.exit(1)
         else:
             assert False, "unhandled option"
-
+    if not server:
+        try:
+            server = os.environ["SERVER"]
+        except KeyError:
+            server = None
     if not location:
         try:
             location = os.environ["LOCATION"]
@@ -157,7 +181,7 @@ def main():
         except KeyError:
             max_load = 30
 
-    process(location, max_load)
+    process(location, server, max_load)
 
 
 if __name__ == "__main__":
