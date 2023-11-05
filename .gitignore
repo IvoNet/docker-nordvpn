@@ -11,6 +11,6 @@ _settings
 _config/**
 creds/
 **/credentials.txt
-ovpn/
+ovpn.bak/
 .tmp/
 **/*.ovpn

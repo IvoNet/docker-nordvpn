@@ -1,4 +1,4 @@
-#!/usr/bin/with-contenv bash
+#!/command/with-contenv bash
 ###############################################################################
 # This script will create a cron job if the correct options are provided
 # while creating / running the container.

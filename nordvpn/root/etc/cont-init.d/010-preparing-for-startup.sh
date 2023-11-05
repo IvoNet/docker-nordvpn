@@ -1,4 +1,4 @@
-#!/usr/bin/with-contenv bash
+#!/command/with-contenv bash
 
 echo "Creating necessary folders ..."
 mkdir /tmp 2>/dev/null

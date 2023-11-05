@@ -1,4 +1,4 @@
-#!/usr/bin/with-contenv python
+#!/command/with-contenv python
 
 import getopt
 import json
@@ -6,6 +6,8 @@ import os
 import random
 import sys
 from shutil import copyfile
+
+sys.path.append("/Users/ivonet/dev/docker/docker-nordvpn/nordvpn/root/usr/local/lib/python3.9/site-packages")
 
 import IvoNet
 

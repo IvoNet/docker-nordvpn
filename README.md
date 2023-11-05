@@ -5,10 +5,25 @@
 This is a NordVPN client docker container that uses nordvpn servers based on location, load and protocol. 
 It makes routing containers' traffic through OpenVPN easy.
 
+## Credentials
+
+important note: The NordVPN use of credentials have recently changed without telling users!
+
+
+You can find your service credentials by following these steps:
+
+- Please log in to your Nord Account by following this [link](https://my.nordaccount.com/dashboard/nordvpn/)
+- Click on the NordVPN tab on the left panel which is under the Services tab.
+- Scroll down and locate the Manual Setup tab, then click on Set up NordVPN manually:
+- Verify your email by entering the one-time code you will receive in your registered email inbox. If you are unable to find the email, please make sure to also check your spam/junk folder.
+- Copy your service credentials by using the buttons on the right.
+- when this token is created a new username and password is also created on the same page.
+- replace the username and password in the credentials.txt file with the new ones.
+- restart the container
+
 ## Usage
 
 See the `bin` folder for run command examples
-
 
 # Images
 
@@ -75,6 +90,8 @@ docker run                                \
        -e MAX_LOAD=10                     \
        -e PROTOCOL=udp                    \
        ivonet/nordvpn-privoxy:latest
+       
+       
 ```
 
 ## ivonet/nordvpn-tor-privoxy

@@ -1,4 +1,4 @@
-FROM ivonet/alpine-python-s6:3.13-3.9.5-2.2.0.3
+FROM ivonet/python-alpine-s6:3.9.16-3.1.2.0
 
 LABEL maintainer="IvoNet.nl"
 
@@ -16,9 +16,11 @@ ENV HOME=/root                                                                  
     MAX_LOAD=30
 
 HEALTHCHECK --start-period=60s --timeout=15s --interval=60s                          \
-        CMD if [[ $( curl -s https://api.nordvpn.com/vpn/check/full | jq -r '.["status"]' ) = "Protected" ]] ; then exit 0; else exit 1; fi
+            CMD if [[ $( curl -s https://nordvpn.com/wp-admin/admin-ajax.php?action=get_user_info_data | jq -r '.["status"]' ) = "true" ]] ; then exit 0; else exit 1; fi
 
 COPY root/ /
+
+RUN chmod +x /etc/cont-init.d/*
 
 VOLUME ["/ovpn", "/credentials"]
 

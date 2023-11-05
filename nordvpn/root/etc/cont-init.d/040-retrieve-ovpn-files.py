@@ -1,4 +1,4 @@
-#!/usr/bin/with-contenv python
+#!/command/with-contenv python
 
 import IvoNet
 
