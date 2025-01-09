@@ -32,7 +32,7 @@ docker run                                   \
        -v "$(pwd)/ovpn:/ovpn"                \
        -v "$(pwd)/creds:/credentials:ro"     \
        -e LOCATION=nl                        \
-       -e MAX_LOAD=20                        \
+       -e MAX_LOAD=30                        \
        -e RECREATE_VPN_CRON="*/30 * * * *"   \
        -e NETWORK="$(route -n get default | grep 'gateway' | awk '{print $2}')" \
        -e PROTOCOL=udp                       \
@@ -103,6 +103,7 @@ docker run                                 \
 ```
 
 
+
 # Environment variables
 
 | Environment Variable                  | Description                                             |
@@ -116,8 +117,7 @@ docker run                                 \
 | NETWORK  | Classless Inter-Domain Routing (IE 192.168.1.0/24), to allows replies once the VPN is up. |
 | NETWORK6 | Classless Inter-Domain Routing (IE fe00:d34d:b33f::/64), to allows replies once the VPN is up. |
 | URL_OVPN_FILES | endpoint to the NordVPN ovpn files (https://downloads.nordcdn.com/configs/archives/servers/ovpn.zip) |
-| API_SERVER_STATS | endpoint to the NordVPN server stats (https://nordvpn.com/api/server/stats) | 
-| API_SERVER | endpoint to the Api Server of NordVPN (https://nordvpn.com/api/server) |
+| API_SERVER_STATS | endpoint to the NordVPN server stats (https://api.nordvpn.com/v1/servers?limit=0) | 
 
 Please read the Credentials section if you do not want to add the USER/PASS credentials to the commandline. 
 
@@ -133,6 +133,11 @@ USERNAME_HERE
 PASSWORD_HERE
 ```
 
+The username and password you use here are different from the ones you use to log into the NordVPN website.
+You can get these credentials from the NordVPN website. You log into your account and go to:
+- Services > NordVPN > Manual setup > Service credentials > verify your email and you will get the credentials.
+
+
 # Release notes
 The versioning of the images seems very long and convoluted but is quite logical when explained :-)
 Per image the format will be explained
@@ -143,6 +148,11 @@ Format: `<major version>.<minor version>`
 
 - when api breaking changes occur the major version will be updated and the minor version reset
 - when bug fixes or non api breaking changes occur the minor version is incremented
+
+### 7.0
+
+- updated the deprecated api endpoint to the new one
+- some documentation updates
 
 ### 2.0
 

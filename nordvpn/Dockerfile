@@ -1,4 +1,4 @@
-FROM ivonet/alpine-python-s6:3.13-3.9.5-2.2.0.3
+FROM ivonet/python-alpine-s6:3.14.0a3-alpine3.21-v3.2.0.1
 
 LABEL maintainer="IvoNet.nl"
 
@@ -10,8 +10,7 @@ RUN apk --no-cache --no-progress add jq iptables ip6tables openvpn              
  && rm -rf /tmp/*
 
 ENV HOME=/root                                                                       \
-    API_SERVER="https://api.nordvpn.com/server"                                      \
-    API_SERVER_STATS="https://nordvpn.com/api/server/stats"                          \
+    API_SERVER_STATS="https://api.nordvpn.com/v1/servers?limit=0"                    \
     API_OVPN_FILES="https://downloads.nordcdn.com/configs/archives/servers/ovpn.zip" \
     MAX_LOAD=30
 
@@ -23,3 +22,5 @@ COPY root/ /
 VOLUME ["/ovpn", "/credentials"]
 
 ENTRYPOINT ["/init"]
+
+#CMD ["/usr/sbin/openvpn", "--cd", "/vpn", "--config", "/vpn/auth", "--auth-user-pass", "/vpn/config.ovpn", "--auth-nocache"]
