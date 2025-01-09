@@ -1,11 +1,10 @@
 #!/usr/bin/env bash
 
 docker run                                 \
-       -it                                 \
-       --rm                                \
+       -d                                  \
        --cap-add=NET_ADMIN                 \
        --device /dev/net/tun               \
-       --name vpn                        \
+       --name vpn                          \
        -v "$(pwd)/ovpn:/ovpn"              \
        -v "$(pwd)/creds:/credentials:ro"   \
        -p 8118:8118                        \

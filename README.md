@@ -59,7 +59,7 @@ Very handy if you want a proxy for your browser (use foxy proxy plugin or somesu
 ### run it ...
 
 Well it is kinda the same as in the nordvpn example but now it also exposes port 8118 to which you can point your proxy to
-get access to a add blocking proxy running on a vpn.
+get access to an add blocking proxy running on a vpn.
 
 ```bash
 docker run                                \
@@ -72,7 +72,7 @@ docker run                                \
        -v "$(pwd)/creds:/credentials:ro"  \
        -p 8118:8118                       \
        -e LOCATION=nl                     \
-       -e MAX_LOAD=10                     \
+       -e MAX_LOAD=50                     \
        -e PROTOCOL=udp                    \
        ivonet/nordvpn-privoxy:latest
 ```
@@ -96,7 +96,7 @@ docker run                                 \
        -v "$(pwd)/creds:/credentials:ro"   \
        -p 8118:8118                        \
        -p 9500:9500                        \
-       -e MAX_LOAD=10                      \
+       -e MAX_LOAD=45                      \
        -e LOCATION=nl                      \
        -e PROTOCOL=tcp                     \
        ivonet/nordvpn-tor-privoxy:latest
@@ -106,18 +106,18 @@ docker run                                 \
 
 # Environment variables
 
-| Environment Variable                  | Description                                             |
-| :-------------------------------------| :-------------------------------------------------------|
-| USER     | Username |
-| PASS     | Password |
-| MAX_LOAD | Only allow servers with a load less then the given percentage. Defaults to 30|
-| LOCATION | Two letter country code to direct the filtering to a specific country  |
-| SERVER   | Specific server name to connect. (e.g. us9957)  |
-| PROTOCOL | tcp/udp |
-| NETWORK  | Classless Inter-Domain Routing (IE 192.168.1.0/24), to allows replies once the VPN is up. |
-| NETWORK6 | Classless Inter-Domain Routing (IE fe00:d34d:b33f::/64), to allows replies once the VPN is up. |
-| URL_OVPN_FILES | endpoint to the NordVPN ovpn files (https://downloads.nordcdn.com/configs/archives/servers/ovpn.zip) |
-| API_SERVER_STATS | endpoint to the NordVPN server stats (https://api.nordvpn.com/v1/servers?limit=0) | 
+| Environment Variable | Description                                                                                          |
+|:---------------------|:-----------------------------------------------------------------------------------------------------|
+| USER                 | Username                                                                                             |
+| PASS                 | Password                                                                                             |
+| MAX_LOAD             | Only allow servers with a load less then the given percentage. Defaults to 30                        |
+| LOCATION             | Two letter country code to direct the filtering to a specific country                                |
+| SERVER               | Specific server name to connect. (e.g. us9957)                                                       |
+| PROTOCOL             | tcp/udp                                                                                              |
+| NETWORK              | Classless Inter-Domain Routing (IE 192.168.1.0/24), to allows replies once the VPN is up.            |
+| NETWORK6             | Classless Inter-Domain Routing (IE fe00:d34d:b33f::/64), to allows replies once the VPN is up.       |
+| URL_OVPN_FILES       | endpoint to the NordVPN ovpn files (https://downloads.nordcdn.com/configs/archives/servers/ovpn.zip) |
+| API_SERVER_STATS     | endpoint to the NordVPN server stats (https://api.nordvpn.com/v1/servers?limit=0)                    | 
 
 Please read the Credentials section if you do not want to add the USER/PASS credentials to the commandline. 
 
@@ -153,6 +153,7 @@ Format: `<major version>.<minor version>`
 
 - updated the deprecated api endpoint to the new one
 - some documentation updates
+- Server stats api was broken after because nordvpn deprecated the old api endpoint. This is now fixed.
 
 ### 2.0
 
