@@ -1,5 +1,4 @@
-#!/usr/bin/with-contenv bash
-
+#!/command/with-contenv bash
 cron_dir="/var/spool/cron/crontabs"
 cron_file="$cron_dir/root"
 

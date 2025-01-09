@@ -32,7 +32,7 @@ docker run                                   \
        -v "$(pwd)/ovpn:/ovpn"                \
        -v "$(pwd)/creds:/credentials:ro"     \
        -e LOCATION=nl                        \
-       -e MAX_LOAD=20                        \
+       -e MAX_LOAD=30                        \
        -e RECREATE_VPN_CRON="*/30 * * * *"   \
        -e NETWORK="$(route -n get default | grep 'gateway' | awk '{print $2}')" \
        -e PROTOCOL=udp                       \
@@ -118,7 +118,6 @@ docker run                                 \
 | NETWORK6 | Classless Inter-Domain Routing (IE fe00:d34d:b33f::/64), to allows replies once the VPN is up. |
 | URL_OVPN_FILES | endpoint to the NordVPN ovpn files (https://downloads.nordcdn.com/configs/archives/servers/ovpn.zip) |
 | API_SERVER_STATS | endpoint to the NordVPN server stats (https://api.nordvpn.com/v1/servers?limit=0) | 
-| API_SERVER | endpoint to the Api Server of NordVPN (https://nordvpn.com/api/server) |
 
 Please read the Credentials section if you do not want to add the USER/PASS credentials to the commandline. 
 
